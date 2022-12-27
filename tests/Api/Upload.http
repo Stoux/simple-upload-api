@@ -1,0 +1,12 @@
+POST https://simple-upload.test/api/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Accept: application/json
+X-Upload-Key: abc123
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="composer.json"
+
+< ./../../composer.json
+--WebAppBoundary--
+
+###

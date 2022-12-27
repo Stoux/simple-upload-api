@@ -49,7 +49,11 @@ class UploadController extends Controller {
     }
 
     public function listSaved( Request $request ) {
-        return $this->listFilesIn( self::SAVED_DIR, ! ! $request->get( 'dirs' ) );
+        if ( empty( $request->get( 'dirs' ) ) ) {
+            return $this->listFilesIn( self::SAVED_DIR );
+        } else {
+            return [ '.', ...$this->listFilesIn(self::SAVED_DIR, true ) ];
+        }
     }
 
     /**
